@@ -1,0 +1,378 @@
+Harsha vardan (Udemy):
+---------------------
+In this project I have covered 
+1) Dynamic components
+2) Services and Bindings
+3) JWT Authentication
+4) Reactive Forms
+5) Custom Directives
+6) Guards
+7) Feature Modules
+
+1) What is angular
+-> *) Angular is a most popular front-end framework to create maintainable web applications, It has a huge scaliblity and felxibility
+   *) Completly re-write of AngularJs
+   *) Developed by Google
+   *) Angular CLI enables to create things faster
+ 
+What are features of angular
+-> 1) *) Application state - is stored in the component
+      user can add the data and edit the data this is called as state, So any information is taking from the user or present into the user is called state
+      this state is stored in the form properties or arrays  
+      *) Component is a class that contains programitically reflection of user interface
+   
+   2) Design logic - written in template 
+      it is a HTML logic to describe the view to present data to the user
+   
+   3) Application logic - written in the component
+      it is a programming logic which supplies the essiential data to the design logic and also response to the user events such as: click, double click etc
+      In Angular application logic is returning in the components
+
+   4) Business logic - is written into the service
+      It is programming logic which is involved to featching the data from the data sources and also performing validations or calculations etc.
+
+2) What are the goals and advantages of angular?
+-> *) Seperation of DOM manupulation Logic from application logic 
+   *) Seperation of HTML logic from Application logic 
+   *) Seperation of business logic from application logic
+   *) Make the code maintainable
+   *) Make the "single page application" is easier
+   *) Make the code unit testable
+
+3) Code compilation process
+-> *) TypeScript - Application source code is typeScript, The problem is typeScript code does not execute directly on the browser, Because the browser are   design to  understand a JavaScript code only, To overcome this problem, TypeScript code compiled and converted into JavaScript code using a compiler called TSC (TypeScript Compiler) 
+   
+   *) Template - The developer writes the design logic that is HTML logic that is template, Instead of executing the HTML logic in the browser, The angular compiler first converts the HTML logic into JavaScript code and then the browser executes JavaScript code to generate DOM elements does the output appears in the browser
+      The benifit of converting the HTML code to JavaScript code is the DOM elements can be dynamically manupulate the script based on the changes to the application data
+
+4) Do's and Don'ts of Angular?
+-> Don'ts 
+    *) Never performs DOM manupulations directly in angular components, to make the "application logic" independent of "desigin logic"and
+      make it unit testable.
+    *) Never write javaScript codes in angular templates
+    *) Never write business logic in components
+    *) Avoid using Jquery to manupulate DOM elements
+
+   Do's
+    *) Always using Routing and modules
+    *) prefer routing gaurds and JWT for authentication and security
+    *) Always manupulate "Application data" by writing the "application logic" in the component
+    *) Always place global css styles in "style.css" file and local css styles in "component.css" file
+    *) Always write RESTAPI's calls (AJAX) and business logic in services only and return observables from services
+    *) Prefer to use BootStrap [or equivalent]
+    *) Always use CSS pre-processor, such as SCSS
+
+5) Building blocks of angular?
+-> Angular is built based on certain fundamentals concepts they are called building blocks, The building blocks of angular are: 
+  1) Component - Coponents is a class that contain application data and event handlers methods that are needed into display to the view 
+   
+  2) Templates - Templates contains design logic taht is HTML logic to present output of user, Template can access all the properties and methods present 
+     in the component class.
+
+  3) Data binding - Data binding is a special syntaxes using the templates to create connection b/w HTML elements and component properties or mathods 
+  4) Modules - Modules are used to group of the components, ex: if we have large project one topic is called as module, A module can import and export 
+     from other modules 
+
+  5) Service - Service is a typeScript class which contains client side business logic which is involved in the loading from the server making AJEX call to 
+     REST API server and also process the receives the data by performing custom and complex validations, calculations and also adding additional 
+     data to the data staracture.
+
+  6) Dependency Injection - It is a concept of creating service objects at runtime automatically and loading those objects in the constructor 
+     of the components as per the necessity of the component
+   As a benifit of dependency injection we can make a singleton taht is single object of a service class for the entire application
+ 
+  7) Directives - In general it is not recomended to write DOM manupulation code directly in angular it will be performed by the angular automatically 
+     when the application data is changed 
+
+6) Angular packages?
+-> 1) @angular/core - provides essiential pre-defined decorators, classes, interfaces and modules that are needed to run every angular application
+      ex: @Component, @NgModule, @pipe, @Directive, @Injectable, @Inject, NgZone, OnChanges, OnInit, ApplicationModule etc. 
+
+   2) @angular/common - Provides built in directives that are useful for most of the real time applications
+      ex: ngIf, ngSwitch, ngClass, ngFor etc.
+
+   3) @angular/compiler - Compiles "templates" (html code) into javaScript code
+
+   4) @angular/platform-browser-dynamic - Invokes the angular compiler (JIT compilation) and specifies the start-up module and also start executing
+      the application
+    
+   5) @angular/platform-browser - Provides a set of pre-defined classes that are related to DOM and browser interaction.
+      ex: browserModule
+
+   6) @angular/forms - Provides necessary pre-defined classes that are related to are needed to create and execute angular forms 
+      ex: formsModule, ReactiveFormsModule, Validators, ngForm etc.
+
+   7) @angular/router - Provides necessary pre-defined classes that are needed to create and execute angular routes
+      ex: RouterModule, Routes, ActivatedRoute, CanActive, routerLink etc.
+
+   8) @angular/animations - Provides necessary pre-defined classes that are needed to create an execute angular animations
+      ex: BrowserAnimationsModule, animated, state, style, transition etc.
+
+   9) Zone.js - Provodes necessary pre-defined commands that are needed to "create detection processes", while executing angular app
+
+   10) @angular/cli - Provodes necessary pre-defined commands that are needed to create, compile, build, add items in angular applications
+       ex: ng new, ng serve, ng build, ng test, etc.
+
+   11) rxjs - Provodes necessary pre-defined classes for creating observables, which are needed to represent the response of REST-API calls of AJAX.
+       ex: Observable, observe, subject etc.
+
+7) Folder Stracture
+->  * e2e - Contains "end-to-end" test cases,
+    * src - Contains source code of the application
+    * app 
+         * app.component.scss - Contains CSS styles of AppComponent
+         * app.component.html - Contains template of AppComponent
+         * app.component.spec.ts - Contains unit test cases of AppComponent
+         * app.component.ts - Contains AppComponent
+         * app.module.ts - Contains AppModule
+         * app-routing.module.ts - Contains routing configuration
+       * assests - Contains static files such as images etc
+       * favicon.ico - Contains browser icon
+       * index.html - Default page/startup page
+       * main.ts - Defines Startup Module
+       * polyfills.ts - Defines polyfills (additional scripts) needed to load and run app
+       * styles.scss - Contains global css styles of entire app
+    * angular.json - Contains Angular cLI aonfiguration
+    * package.json - Defines current app (package) details and its dependencies
+    * tsConfig.json - Containes typeScript compiler configuration settings
+
+8) Why we use node js for angular application?
+-> Node js is a server side platform to build server side programs by using javaScript language, But in our code we are not writing any code for node js 
+   and node js is not pre-requisities working with angular, But we must de installation of node js in our machine in order to work and practice angular, 
+   The reason behind this create and run the angular application taht is built in tool Angular CLI (This Angular CLI internally work based on node js)
+   ex: if we modifies the source code of our angular application and save the file, automatically Angular CLI detect the changes of our file, then
+       recompile and refresh the application in the browser, and also all packages are shipped to npm (node package manager) This is the reason we are 
+       using node js.
+
+9) Flow of Execution of angular App?
+-> * Most important part of execution angular application is index.html, The browser loads index.html file into the memory
+   * As per the tags for the index.html the main.ts file will invoked that means a compile version of main.ts file not the actual file
+   * And from their we are navigating to app.module.ts 
+   * From their it must to app.component.ts + app.component.html these two files are work together as a unit
+  This is the fundamental execution of angular application
+
+10) Why we adding a bootstrap in angular?
+-> In most of the application in required to use bootstrap or its equalient CSS framework to make our user interface profinational without writing much 
+   of CSS code 
+   Bootstarp makes it easy to create stunning user interfaces by providing ready made CSS classes 
+   1) npm install jquery --save - Because bootstrap works based on jQuery
+   2) npm install poppery.js --save - Because bootstrap works based on popper.js for some of its feature
+   3) npm install bootstrap --save - Actual package for bootstrap, which loads the CSS file and javaScript file of bootstrap
+      Font-awesome - which provides a large set-up icons
+      4) npm install font-awesome --save
+   Finally we need to added a these files for angular.json file
+   "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/propper.js/dist/umd/propper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
+
+11) What is Component?
+-> * Component class contains "programming logic" of the application.
+   * Component class contains "application data" + "event handler methods".
+   * Component class is responsible to supply datato the template.
+     ex: class Component {
+      Properties
+      Methods
+     }
+
+     Component MetaData: 
+     class AppComponent {
+      Properties
+      Methods
+     }
+
+               templateUrl: 'templatefile.html',
+     MetaData: selector: 'tagname',
+               styleUrls: ['StyleSheet.css']   -Notice this is an array, that means we can add multiple css files
+     
+12) What is Routing?
+-> * Page Navigation, to create "Single-Page-Application"
+   * Route maps an URL to a component.
+     1) import "@angular/router" package in "Package.json" file
+     2) Define Base URL in "index.html" file  ex: <base href="/">
+     3) Create hyperlink for route   ex: <a routerLink="/path">Link text</a>
+     4) Create a Router module
+     5) Create Router Outlet in app.component.html  ex: <router-outlet></router-outlet>
+
+13) ngFor:
+-> * Reads data from an array
+   * Executes a template once-per-one item in an array
+     ex: <tag *ngFor="let variableName of arrayName"></tag>
+     
+14) What is Data Binding?
+-> * Relationship between "Template's HTML Element" and "Component's Property"
+   * The value of "Template's HTML Element" will be automatically updated into "Component's Property" and vice versa.
+     
+     There are four types of Data Binding are:
+     1) Interpolation Binding {{}} - It is used to display a value of property in text format
+        ex: we want to display the name property as a plan text or heading
+
+     2) Property Binding [ ] - It is used to asign the value of one property into another property
+        ex: We want to read the person name property and assign the same into employee name property
+
+     3) Event Binding ( ) - It is used to call a method when the user performs an actions are:
+        click, doubleClick or any other keyword activity
+        ex: when the user clicks on a button, want to execute a on button click method
+
+     4) Two way Binding [( )] - It is used to read the value of a property and display the same in 
+        form element such as: text box, and also when the user modifies the value of form element assign the 
+        same value into the property as its reads and writes the value of a property called two-way binding
+        Infact, it is a Property binding and Event binding so that's why we use both paranthis and square brackets
+
+15) Style Handling?
+-> [style.property] = "value"
+   [style.property] = "(condition)? truevalue:falsevalue"
+
+   [ngClass] = "value"
+   [ngClass] = "(condition)? truevalue:falsevalue"
+
+   ngIf - * Simple ngIf   <tag *ngIf='condition'></tag>
+   ngIf and else  -       <tag *ngIf='condition; then TrueTemplate; else FalseTemplate'></tag>
+   <ng-template></ng-template> - it is predefined special element in angular which stands for angular 
+                                 template, which may contine one or more tags, so it is a tag with no meaning
+
+16) Pipes
+-> Pipe is a class that recives a value execute a function called transform and return to a value that 
+   is to be printed in the output 
+   * {{property | uppercase}} - Converts String to uppercase
+   * {{property | lowercase}} - Converts String to lowercase
+   * {{property | slice: startIndex: endIndex}} - Gets part of String, between startIndex and end index
+   * {{property | number: .2}} - provides digit grouping and controls decimal places
+   * {{property | currency: "USD"}} - provides currency symbol
+   * {{property | percent}} - Converts number to percent
+   * {{property | json}} - Converts "javaScript object into json"
+   * {{property | date}} - Specifies data format
+     There are some available from date formates are:
+     * shortDate - 31/12/2023                           * y-M-d - 2023-12-23
+     * mediumDate - Dec 31, 2023                        * h:m:s - 11:59:59
+     * longDate - December 31, 2023                     * a - AM
+     * fullDate - Monday, December 31, 2023             * H:m - 23:59
+     * shortTime - 11:59 AM                             * EEE - Tue
+     * mediumTime - 11:59:59 AM                         * EEEE - Tuesday
+     * short - 31/12/2023, 11:59 AM                     * MMM - Dec
+     * medium - Dec 31, 2023, 11:59:59 AM               * MMMM - December
+     * d/M/y - 31/12/2023                               * z - +0530
+
+17) ngSwitch - It is used to check a property value and display some contents based on value of the perticular property
+               ex: <tag [ngSwitch]="property">
+                      <tag *ngSwitchCase="'value1'">Content here</tag>
+                      <tag *ngSwitchCase="'value2'">Content here</tag>
+                      <tag *ngSwitchCase="'value3'">Content here</tag>
+                      <tag *ngSwitchDefault="'value1'">Content here</tag>
+                   </tag>
+
+18) Modules:
+ -> Without creating a components and modules we cannot create even Hello world application in angular framework
+    there must be one component called AppComponent also called as rootComponent and there must be atleast one 
+    module called as AppModule also called as rootModule, that's why when we creating a application angular CLI
+    it creates AppComponent and AppModule 
+
+    what is modules?
+    -> * Modules is a collection of components, directives and pipes 
+       * Mainly used to organize the components and other (Directives and pipes)
+       * Goals of Modules?
+         -> * Consolidate components, directives, pipes into cohesive of functionality
+            * Make some of the components, directives, pipes public; so that modules component templates can use them
+            * Import components, directives, pipes from the other modules, that are required by current modules's 
+              component templates 
+            * Provide services that the other modules can use.
+       * Module defination and Metadate
+         -> * Angular modules are called as NgModules
+            * An NgModule is a class that is decorated with "NgModule" decorator, that contains the following metadata;
+            1) declerations: List of components, directives and pipes, that are part of current module
+            2) exports: List of components, directives and pipes, that are public, that can be accessible in other modules
+                        that are importing the current modules
+            3) imports: List of modules, that are current module imports; So the current module can use components, directives, pipes
+                        that are already exported by the particular module.
+            4) providers: List of services that can be used by the components, directives and pipes of current module.
+
+18) Services:
+-> In Angular application cannot interact with the database server directly, But However we can perform database interaction
+   indirectly by using AJAX calls (Asyncronous JavaScript and XML) which is a technique of sending HTTP request to web server
+   and receives the HTTP response for server Asyncronously without refreshing the full UI of the web page, that means we have to 
+   create a API server program which needed a database server and our application 
+   For this logics we cannot able write a business logic for components, that's why we are using a services 
+
+-> * Services is a class, which is a collection of properties and methods which contains re-usable programming logic "and also performs
+   "data source interaction".
+   * Services can be accessible in components 
+   * Services does not contains eventHandler methods, Contains a business logics 
+   Goals of Services:
+     * To Seperation of business logic and data access logic from components
+     * Make components contain code for only supplying the data to the template and respond to the user actions 
+       such as click and also call the necessary services. 
+
+   * We have a four steps to create a service and make some results from services?
+     1) Create a service class:
+     -> Create a class with one or more properties and methods that contains business logic and data access logic
+
+     2) Make ready the service for dependency injection:
+     -> Add @Injectable( ) decorator above the service class 
+
+     3) Provide the service Globally/Locally
+     -> * Add provideIn: "root" option in @Injectable( ) decorator. [or]  
+        * Add providers: [service] in AppModule's metadata. [or]
+        * Add providers: [service]  in any other modules metadata. [or]
+        * Add providers: [service]  in any other component's metadata.
+
+        ex: @Injectable({providedIn: root })
+            class service {
+               properties
+               methods
+            }
+
+     4) Inject the service into actual component
+     -> * Add @Inject(Service) private referanceVariable : Service
+          in any components constructor. [or]
+        * Add private referanceVariable : Service  in any component's constructor
+        ex: class component {
+         constructor(@Inject(Service) private service: Service){
+         }
+        }
+
+19) What is RxJx, Observable and observer?
+-> While working with AJAX and also while performing some large task which take some time to execute we required to use 
+   observable and observe concept of RxJx (Reactive extension for javaScript)
+
+   RxJx (Reactive extension for javaScript) - It is one of the third party packages that provides essential pre-defined scripts
+   that are needed to executes observable and observer
+
+   Define observable and observer?
+   -> it is a pattern of "message passing" from "publisher" to "subscriber" 
+      * Flow of functionality: 
+        * Observable is created .
+        * observer subscribe to the observables
+        * Observable can pass messages (notification) to the observer
+        * Each time, when the observable passes a notification, it received by observer
+
+      * Real-time usage of observables and observer:
+        * While receiving response from AJAX
+        * While performing large task in client (browser)
+      * Observables executes only when observer subscribe to it
+
+      How to work a observable and observer?
+      -> Observable: (User Inputs/Http Requests/ custom Data Source)
+         Observer: Handle data, Handle error, Handle Completion
+
+   What is AJAX?
+   -> AJAX is (Asynchronous JavaScript and XML) is Not a language, but it is a concept, which used to 
+      "send background request to server" and also "get background response from server", withour refreshing or 
+      (reloading) the web page in the server.
+             
+
+
+
+
+
+
+
+
+
+
+
